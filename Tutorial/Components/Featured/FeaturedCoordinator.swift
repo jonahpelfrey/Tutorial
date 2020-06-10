@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FeaturedFlow: class {
-    func coordinateToDetail()
+    func coordinateToDetail(item: Feature)
 }
 
 class FeaturedCoordinator: Coordinator, FeaturedFlow {
@@ -22,11 +22,13 @@ class FeaturedCoordinator: Coordinator, FeaturedFlow {
     func start() {
         let featuredViewController = FeaturedViewController()
         featuredViewController.coordinator = self
-        featuredViewController.title = "Featured"
+        featuredViewController.title = "Feature"
         navigationController.pushViewController(featuredViewController, animated: false)
     }
     
-    func coordinateToDetail() {
-        
+    func coordinateToDetail(item: Feature) {
+        let featuredDetailViewController = FeaturedDetailViewController()
+        featuredDetailViewController.title = item.title
+        navigationController.pushViewController(featuredDetailViewController, animated: true)
     }
 }

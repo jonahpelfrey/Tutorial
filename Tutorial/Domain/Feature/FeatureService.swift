@@ -35,11 +35,11 @@ final class FeatureService {
     
     static func seed() -> [Feature] {
         return [
-            Feature(title: "A"),
-            Feature(title: "B"),
-            Feature(title: "C"),
-            Feature(title: "D"),
-            Feature(title: "E")
+            Feature(title: "Top Gun"),
+            Feature(title: "Lord Of The Rings"),
+            Feature(title: "Game Of Thrones"),
+            Feature(title: "Inception"),
+            Feature(title: "Wall-E")
         ]
     }
 }

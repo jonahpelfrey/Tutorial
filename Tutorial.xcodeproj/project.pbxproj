@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F047F98924918A18001ECC3A /* FeaturedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047F98824918A18001ECC3A /* FeaturedDetailViewController.swift */; };
+		F047F98C24918F96001ECC3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047F98B24918F96001ECC3A /* SettingsViewController.swift */; };
+		F047F98E24918F9D001ECC3A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047F98D24918F9D001ECC3A /* SettingsCoordinator.swift */; };
+		F047F99124919229001ECC3A /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047F99024919229001ECC3A /* UIColorExtension.swift */; };
 		F09F72A9249163F5001BC319 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09F72A8249163F5001BC319 /* AppDelegate.swift */; };
 		F09F72AB249163F5001BC319 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09F72AA249163F5001BC319 /* SceneDelegate.swift */; };
 		F09F72B2249163F6001BC319 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F09F72B1249163F6001BC319 /* Assets.xcassets */; };
@@ -31,6 +35,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F047F98824918A18001ECC3A /* FeaturedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedDetailViewController.swift; sourceTree = "<group>"; };
+		F047F98B24918F96001ECC3A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		F047F98D24918F9D001ECC3A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
+		F047F99024919229001ECC3A /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		F09F72A5249163F5001BC319 /* Tutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F09F72A8249163F5001BC319 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F09F72AA249163F5001BC319 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +75,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F047F98A24918F85001ECC3A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F047F98D24918F9D001ECC3A /* SettingsCoordinator.swift */,
+				F047F98B24918F96001ECC3A /* SettingsViewController.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F047F98F2491921C001ECC3A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F047F99024919229001ECC3A /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		F09F729C249163F5001BC319 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +126,7 @@
 		F09F72BE249164FC001BC319 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F047F98F2491921C001ECC3A /* Extensions */,
 				F0D3C5F924917F2A00CA7C41 /* Enums */,
 				F0D3C5EF2491787C00CA7C41 /* Error */,
 				F0D3C5E82491749300CA7C41 /* CustomView */,
@@ -121,6 +147,7 @@
 		F0D3C5D824916C5900CA7C41 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				F047F98A24918F85001ECC3A /* Settings */,
 				F0D3C5E5249172FD00CA7C41 /* Entry */,
 				F0D3C5DF24916CB200CA7C41 /* TabBar */,
 				F0D3C5DC24916C7800CA7C41 /* Login */,
@@ -162,6 +189,7 @@
 		F0D3C5E424916DF600CA7C41 /* FeaturedDetail */ = {
 			isa = PBXGroup;
 			children = (
+				F047F98824918A18001ECC3A /* FeaturedDetailViewController.swift */,
 			);
 			path = FeaturedDetail;
 			sourceTree = "<group>";
@@ -288,10 +316,13 @@
 			files = (
 				F0D3C5F724917BBA00CA7C41 /* FeatureService.swift in Sources */,
 				F09F72C4249169A1001BC319 /* TabBarCoordinator.swift in Sources */,
+				F047F98C24918F96001ECC3A /* SettingsViewController.swift in Sources */,
 				F0D3C5F12491789500CA7C41 /* NetworkError.swift in Sources */,
+				F047F99124919229001ECC3A /* UIColorExtension.swift in Sources */,
 				F09F72C6249169FF001BC319 /* EntryCoordinator.swift in Sources */,
 				F09F72A9249163F5001BC319 /* AppDelegate.swift in Sources */,
 				F09F72C2249166F1001BC319 /* Coordinator.swift in Sources */,
+				F047F98924918A18001ECC3A /* FeaturedDetailViewController.swift in Sources */,
 				F0D3C5FB24917F3400CA7C41 /* Section.swift in Sources */,
 				F0D3C5E72491740600CA7C41 /* FeaturedView.swift in Sources */,
 				F0D3C5DB24916C7100CA7C41 /* FeaturedViewController.swift in Sources */,
@@ -303,6 +334,7 @@
 				F0D3C5E124916CC300CA7C41 /* TabBarController.swift in Sources */,
 				F0D3C5F424917AF600CA7C41 /* Feature.swift in Sources */,
 				F0D3C5EC2491768B00CA7C41 /* FeaturedCell.swift in Sources */,
+				F047F98E24918F9D001ECC3A /* SettingsCoordinator.swift in Sources */,
 				F09F72AB249163F5001BC319 /* SceneDelegate.swift in Sources */,
 				F0D3C5DE24916C8100CA7C41 /* LoginViewController.swift in Sources */,
 			);

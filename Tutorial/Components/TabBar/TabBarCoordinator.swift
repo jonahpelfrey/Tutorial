@@ -19,18 +19,24 @@ class TabBarCoordinator: Coordinator {
         let tabBarController = TabBarController()
         tabBarController.coordinator = self
         
-        // Initialize root view controllers
+        // Feature
         let featuredNavigationController = UINavigationController()
         featuredNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
         let featuredCoordinator = FeaturedCoordinator(navigationController: featuredNavigationController)
         
+        // Settings
+        let settingsNavigationController = UINavigationController()
+        settingsNavigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 2)
+        let settingsCoordinator = SettingsCoordinator(navigationController: settingsNavigationController)
+        
         // Configure tab bar with controllers and presentation style
-        tabBarController.viewControllers = [featuredNavigationController]
+        tabBarController.viewControllers = [featuredNavigationController, settingsNavigationController]
         tabBarController.modalPresentationStyle = .fullScreen
         navigationController.present(tabBarController, animated: true, completion: nil)
         
         // Initialize all coordinators within the tab bar
         coordinate(to: featuredCoordinator)
+        coordinate(to: settingsCoordinator)
     }
 }
 

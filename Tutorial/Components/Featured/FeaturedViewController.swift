@@ -61,6 +61,6 @@ extension FeaturedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
         collectionView.deselectItem(at: indexPath, animated: true)
-        // navigate somewhere
+        coordinator?.coordinateToDetail(item: item)
     }
 }
