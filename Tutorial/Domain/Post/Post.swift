@@ -9,29 +9,36 @@
 import Foundation
 
 struct Post: Hashable {
-    let user: Int
-    let id: Int
+    let id: UUID = .init()
     let title: String
     let message: String
+    let source: String
     
     func hash(into hasher: inout Hasher) {
-        hasher.combine(user)
         hasher.combine(id)
     }
 }
 
 struct PostDTO: Decodable {
-    let userId: Int
-    let id: Int
-    let title: String
-    let body: String
+    let status: String
+    let totalResults: Int
+    let articles: [ArticleDTO]
+    
+    struct ArticleDTO: Decodable {
+        let source: SourceDTO
+        let title: String
+        let description: String
+        let urlToImage: String
+        let publishedAt: String
+        
+        struct SourceDTO: Decodable {
+            let name: String
+        }
+    }
 }
 
 struct PostDTOMapper {
-    static func map(_ dto: PostDTO) -> Post {
-        return Post(user: dto.userId, id: dto.id, title: dto.title, message: dto.body)
-    }
-    static func map(_ dtos: [PostDTO]) -> [Post] {
-        return dtos.map({Post.init(user: $0.userId, id: $0.id, title: $0.title, message: $0.body)})
+    static func map(_ dto: PostDTO) -> [Post] {
+        return dto.articles.map { Post(title: $0.title, message: $0.description, source: $0.source.name) }
     }
 }

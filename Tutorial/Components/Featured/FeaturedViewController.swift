@@ -26,11 +26,29 @@ class FeaturedViewController: UIViewController, HasCustomView {
         configureDelegates()
         configureDataSource()
         configureSubscriptions()
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        customView.refreshControl.addTarget(self, action: #selector(performCollectionRefresh(_:)), for: .valueChanged)
+    }
+    
+    @objc func performCollectionRefresh(_ sender: Any) {
+        viewModel.refreshPosts()
+    }
+}
+
+extension FeaturedViewController: FeatureProvider {
+    @objc func didFinishLoading() {
+        DispatchQueue.main.async {
+            self.customView.refreshControl.endRefreshing()
+        }
     }
 }
 
 extension FeaturedViewController {
+    
     private func configureDelegates() {
+        viewModel.delegate = self
+        
         customView.collectionView.register(FeaturedCell.self, forCellWithReuseIdentifier: FeaturedCell.reuseIdentifier)
         customView.collectionView.delegate = self
     }
@@ -61,8 +79,8 @@ extension FeaturedViewController {
 
 extension FeaturedViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        guard let post = dataSource.itemIdentifier(for: indexPath) else { return }
         collectionView.deselectItem(at: indexPath, animated: true)
-        coordinator?.coordinateToDetail(item: item)
+        coordinator?.coordinateToDetail(post: post)
     }
 }

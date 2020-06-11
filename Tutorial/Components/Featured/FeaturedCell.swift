@@ -26,9 +26,9 @@ class FeaturedCell: UICollectionViewCell {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 24, weight: .heavy)
+        label.font = UIFont.systemFont(ofSize: 18, weight: .heavy)
         label.textColor = .white
-        label.numberOfLines = 1
+        label.numberOfLines = 0
         label.textAlignment = .left
         label.lineBreakMode = .byTruncatingTail
         return label
@@ -37,7 +37,7 @@ class FeaturedCell: UICollectionViewCell {
     lazy var messageLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 18, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .white
         label.numberOfLines = 0
         label.lineBreakMode = .byWordWrapping
@@ -55,6 +55,7 @@ class FeaturedCell: UICollectionViewCell {
     
     private func prepare() {
         backgroundColor = .systemBlue
+        addShadow(color: UIColor.lightGray, offset: .init(width: 0, height: 10))
         
         contentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -82,7 +83,16 @@ class FeaturedCell: UICollectionViewCell {
         
     }
     
+    func addShadow(color: UIColor, offset: CGSize) {
+        layer.shadowColor = color.cgColor
+        layer.shadowOpacity = 1
+        layer.shadowOffset = offset
+        layer.shadowRadius = layer.cornerRadius
+    }
+    
     override func layoutSubviews() {
         layer.cornerRadius = 10
+        layer.shadowRadius = 10
+        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
     }
 }
