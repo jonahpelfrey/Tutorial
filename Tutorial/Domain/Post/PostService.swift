@@ -1,5 +1,5 @@
 //
-//  FeatureService.swift
+//  PostService.swift
 //  Tutorial
 //
 //  Created by Jonah Pelfrey on 6/10/20.
@@ -8,11 +8,10 @@
 
 import Foundation
 
-final class FeatureService {
+class PostService {
+    typealias PostResult = (Result<[Post], NetworkError>) -> Void
     
-    typealias FeatureResult = (Result<[Feature], NetworkError>) -> Void
-    
-    static func fetch(completion: @escaping FeatureResult) {
+    static func fetch(completion: @escaping PostResult) {
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             guard error == nil else {
@@ -25,21 +24,11 @@ final class FeatureService {
             }
             do {
                 let decoder = JSONDecoder()
-                let decoded = try decoder.decode([Feature].self, from: data)
-                completion(.success(decoded))
+                let postDTO = try decoder.decode([PostDTO].self, from: data)
+                completion(.success(PostDTOMapper.map(postDTO)))
             } catch {
                 completion(.failure(.parsing))
             }
         }.resume()
-    }
-    
-    static func seed() -> [Feature] {
-        return [
-            Feature(title: "Top Gun"),
-            Feature(title: "Lord Of The Rings"),
-            Feature(title: "Game Of Thrones"),
-            Feature(title: "Inception"),
-            Feature(title: "Wall-E")
-        ]
     }
 }

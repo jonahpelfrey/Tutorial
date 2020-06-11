@@ -14,7 +14,7 @@ class FeaturedViewController: UIViewController, HasCustomView {
     var coordinator: FeaturedFlow?
     
     private var viewModel = FeaturedViewModel()
-    private var dataSource: UICollectionViewDiffableDataSource<Section, Feature>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Post>!
     private var cancellables: Set<AnyCancellable> = []
     
     override func loadView() {
@@ -36,20 +36,22 @@ extension FeaturedViewController {
     }
     
     private func configureDataSource() {
-        self.dataSource = UICollectionViewDiffableDataSource<Section, Feature>(collectionView: customView.collectionView)
-        { (collectionView, indexPath, feature) -> UICollectionViewCell? in
+        self.dataSource = UICollectionViewDiffableDataSource<Section, Post>(collectionView: customView.collectionView)
+        { (collectionView, indexPath, post) -> UICollectionViewCell? in
             guard let cell = self.customView.collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedCell.reuseIdentifier, for: indexPath) as? FeaturedCell else { fatalError("Cell not registered with collection view")
             }
-            
+            cell.titleText = post.title
+            cell.messageText = post.message
+            cell.layoutIfNeeded()
             return cell
         }
     }
     
     private func configureSubscriptions() {
-        viewModel.features
+        viewModel.posts
             .receive(on: RunLoop.main)
             .sink { [weak self] (features) in
-                var snapshot = NSDiffableDataSourceSnapshot<Section, Feature>()
+                var snapshot = NSDiffableDataSourceSnapshot<Section, Post>()
                 snapshot.appendSections([.main])
                 snapshot.appendItems(features)
                 self?.dataSource.apply(snapshot, animatingDifferences: true)

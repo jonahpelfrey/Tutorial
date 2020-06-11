@@ -11,3 +11,16 @@ import Foundation
 struct Feature: Hashable, Decodable {
     let title: String
 }
+
+struct Featurez: Hashable, Decodable {
+    let id: UUID = UUID()
+    let title: String
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
+struct FeatureDTO: Decodable {
+    
+}

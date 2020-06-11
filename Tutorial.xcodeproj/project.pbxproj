@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F027D15C2491A0E0008FF87C /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F027D15B2491A0E0008FF87C /* Post.swift */; };
+		F027D15E2491A0E7008FF87C /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F027D15D2491A0E7008FF87C /* PostService.swift */; };
 		F047F98924918A18001ECC3A /* FeaturedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047F98824918A18001ECC3A /* FeaturedDetailViewController.swift */; };
 		F047F98C24918F96001ECC3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047F98B24918F96001ECC3A /* SettingsViewController.swift */; };
 		F047F98E24918F9D001ECC3A /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F047F98D24918F9D001ECC3A /* SettingsCoordinator.swift */; };
@@ -35,6 +37,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F027D15B2491A0E0008FF87C /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		F027D15D2491A0E7008FF87C /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		F047F98824918A18001ECC3A /* FeaturedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedDetailViewController.swift; sourceTree = "<group>"; };
 		F047F98B24918F96001ECC3A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		F047F98D24918F9D001ECC3A /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
@@ -75,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F027D15A2491A0D2008FF87C /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				F027D15B2491A0E0008FF87C /* Post.swift */,
+				F027D15D2491A0E7008FF87C /* PostService.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
 		F047F98A24918F85001ECC3A /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +244,7 @@
 		F0D3C5F824917D0F00CA7C41 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				F027D15A2491A0D2008FF87C /* Post */,
 				F0D3C5F524917BAF00CA7C41 /* Feature */,
 			);
 			path = Domain;
@@ -314,9 +328,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F027D15E2491A0E7008FF87C /* PostService.swift in Sources */,
 				F0D3C5F724917BBA00CA7C41 /* FeatureService.swift in Sources */,
 				F09F72C4249169A1001BC319 /* TabBarCoordinator.swift in Sources */,
 				F047F98C24918F96001ECC3A /* SettingsViewController.swift in Sources */,
+				F027D15C2491A0E0008FF87C /* Post.swift in Sources */,
 				F0D3C5F12491789500CA7C41 /* NetworkError.swift in Sources */,
 				F047F99124919229001ECC3A /* UIColorExtension.swift in Sources */,
 				F09F72C6249169FF001BC319 /* EntryCoordinator.swift in Sources */,

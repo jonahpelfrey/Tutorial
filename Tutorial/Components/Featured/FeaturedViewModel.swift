@@ -9,50 +9,21 @@
 import Foundation
 import Combine
 
-struct User {
-    let jobTitle: String
-    let firstName: String
-    let lastName: String
-    let address: String
-    let phoneNumber: Int
-}
-
-class UserViewModel {
-    let users: [User]
-    
-    init(users: [User]) {
-        self.users = users
-    }
-    
-    func getRawUsers() -> [User] {
-        return self.users
-    }
-    
-//    func getUsers() -> [ViewableUser] {
-//        return self.users.map({$0.jobTitle})
-//    }
-}
-
-protocol ViewableFeature {
-    // This would outline a way to massage the Domain Feature type to an object suitable for the view controller
-}
-
 class FeaturedViewModel {
     
-    var features = CurrentValueSubject<[Feature], Never>([])
+    var posts = CurrentValueSubject<[Post], Never>([])
     
     init() {
-        self.features.send(FeatureService.seed())
+        loadPosts()
     }
     
-    func loadFeatures() {
-        FeatureService.fetch { (result) in
+    func loadPosts() {
+        PostService.fetch { (result) in
             switch result {
             case .failure(let error):
                 print("Failure: \(error)")
-                
-            case .success(let features):
-                print("Success: \(features)")
+            case .success(let posts):
+                self.posts.send(posts)
             }
         }
     }
